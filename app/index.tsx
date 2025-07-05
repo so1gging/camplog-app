@@ -1,9 +1,5 @@
-import { View, Text } from 'react-native';
+import MapView from '@/components/MapView/MapView';
 
 export default function Home() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Expo Router 시작</Text>
-    </View>
-  );
+  return <MapView />;
 }
