@@ -37,3 +37,7 @@ yarn-error.*
 *.tsbuildinfo
 .idea
 .env
+
+# Prebuild native folders
+android/
+ios/
