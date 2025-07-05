@@ -5,9 +5,10 @@
   "scripts": {
     "start": "expo start",
     "eas build": "eas build --platform ios --profile development",
-    "android": "expo run:android",
+    "run-ios": "expo run:ios",
     "ios": "expo start --ios --clear",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "android": "expo run:android"
   },
   "dependencies": {
     "@mj-studio/react-native-naver-map": "^2.5.2",
