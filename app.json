@@ -17,7 +17,10 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.anonymous.Camplogapp",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
+        }
       }
     },
     "android": {
