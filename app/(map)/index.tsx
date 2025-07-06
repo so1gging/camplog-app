@@ -8,7 +8,7 @@ export default function Home() {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `https://apis.data.go.kr/B551011/GoCamping/basedList?MobileOS=IOS&MobileApp=Camplog&serviceKey=${process.env.EXPO_PUBLIC_SERVICE_KEY}&_type=json`,
+          `${process.env.EXPO_PUBLIC_DATA_API_URL}/basedList?MobileOS=IOS&MobileApp=Camplog&serviceKey=${process.env.EXPO_PUBLIC_SERVICE_KEY}&_type=json`,
         );
         console.log(res.data.response.body.items.item);
       } catch (e) {
