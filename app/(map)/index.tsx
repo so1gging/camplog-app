@@ -1,5 +1,8 @@
-import { SafeAreaView } from 'react-native';
-import { NaverMapView } from '@mj-studio/react-native-naver-map';
+import { SafeAreaView, Text } from 'react-native';
+import {
+  NaverMapMarkerOverlay,
+  NaverMapView,
+} from '@mj-studio/react-native-naver-map';
 import { useBasedListQuery } from '@/services/camping/camping.queries';
 
 const INIT_REGION = {
@@ -17,9 +20,19 @@ export default function Home() {
     _type: 'json',
   });
 
+  const items = data?.response.body.items.item;
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <NaverMapView style={{ flex: 1 }} initialRegion={INIT_REGION} />
+      <NaverMapView style={{ flex: 1 }} initialRegion={INIT_REGION}>
+        {items?.map((item, index) => (
+          <NaverMapMarkerOverlay
+            key={index}
+            longitude={Number(item.mapX)}
+            latitude={Number(item.mapY)}
+          />
+        ))}
+      </NaverMapView>
     </SafeAreaView>
   );
 }
