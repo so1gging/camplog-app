@@ -20,12 +20,12 @@ export default function Home() {
     _type: 'json',
   });
 
-  const items = data?.response.body.items.item;
+  const items = data?.response.body.items.item || [];
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <NaverMapView style={{ flex: 1 }} initialRegion={INIT_REGION}>
-        {items?.map((item, index) => (
+        {items.map((item, index) => (
           <NaverMapMarkerOverlay
             key={index}
             longitude={Number(item.mapX)}
