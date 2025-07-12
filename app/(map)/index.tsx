@@ -1,7 +1,6 @@
 import { SafeAreaView } from 'react-native';
 import { NaverMapView } from '@mj-studio/react-native-naver-map';
-import { useEffect } from 'react';
-import axios from 'axios';
+import { useBasedListQuery } from '@/services/camping/camping.queries';
 
 const INIT_REGION = {
   latitude: 33.99611583543648,
@@ -11,20 +10,12 @@ const INIT_REGION = {
 };
 
 export default function Home() {
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.EXPO_PUBLIC_DATA_API_URL}/basedList?MobileOS=IOS&MobileApp=Camplog&serviceKey=${process.env.EXPO_PUBLIC_SERVICE_KEY}&_type=json`,
-        );
-        // console.log(res.data.response.body.items.item);
-      } catch (e) {
-        console.error('Fetch error:', e);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { data } = useBasedListQuery({
+    MobileOS: 'IOS',
+    MobileApp: 'Camplog',
+    serviceKey: decodeURIComponent(process.env.EXPO_PUBLIC_SERVICE_KEY || ''),
+    _type: 'json',
+  });
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
